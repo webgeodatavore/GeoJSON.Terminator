@@ -5,7 +5,7 @@ It's derivated from [Leaflet-Terminator](https://github.com/joergdietrich/Leafle
 
 ## Demo
 
-You can see a [demo in action]() using OpenLayers
+You can see a [demo in action](https://rawgit.com/webgeodatavore/GeoJSON.Terminator/master/demo/index.html) using OpenLayers
 
 It generates a 'pseudo-GeoJSON'.
 
