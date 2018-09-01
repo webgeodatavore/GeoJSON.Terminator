@@ -1,0 +1,27 @@
+{
+  "name": "@webgeodatavore/geojson.terminator",
+  "version": "1.0.0",
+  "description": "GeoJSON Night and day regions on Earth",
+  "main": "GeoJSON.Terminator.js",
+  "scripts": {
+    "build": "rollup -c",
+    "prepare": "npm run build"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/webgeodatavore/GeoJSON.Terminator.git"
+  },
+  "keywords": [
+    "geojson",
+    "terminator"
+  ],
+  "author": "Thomas Gratier",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/webgeodatavore/GeoJSON.Terminator/issues"
+  },
+  "homepage": "https://github.com/webgeodatavore/GeoJSON.Terminator#readme",
+  "devDependencies": {
+    "rollup": "^0.60.1"
+  }
+}

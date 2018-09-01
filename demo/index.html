@@ -1,0 +1,70 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset=utf-8>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <link rel="stylesheet" href="https://cdn.rawgit.com/openlayers/openlayers.github.io/master/en/v5.2.0/css/ol.css" type="text/css">
+    <style>
+      html, body {
+        height: 90%;
+        padding: 0;
+        margin: 0;
+      }
+      #map {
+        height: 600px;
+        width: 100%;
+      }
+    </style>
+    <script src="https://cdn.rawgit.com/openlayers/openlayers.github.io/master/en/v5.2.0/build/ol.js"></script>
+    <script src='https://npmcdn.com/@turf/turf/turf.min.js'></script>
+    <script src="../GeoJSON.Terminator.js"></script>
+    <title>OpenLayers GeoJSON Night and days</title>
+  </head>
+  <body>
+    <h2>OpenLayers GeoJSON Night and days</h2>
+    <div id="map" class="map"></div>
+    <script type="text/javascript">
+      var map = new ol.Map({
+        target: 'map',
+        layers: [
+          new ol.layer.Tile({
+            source: new ol.source.Stamen({
+              layer: 'watercolor'
+            })
+          })
+        ],
+        view: new ol.View({
+          center: ol.proj.fromLonLat([37.41, 8.82]),
+          zoom: 1
+        })
+      });
+
+      var geoJSON = new GeoJSONTerminator();
+      var timeLayer = new ol.layer.Vector({
+        source: new ol.source.Vector({
+          features: (new ol.format.GeoJSON()).readFeatures(geoJSON, {
+            featureProjection: 'EPSG:3857'
+          })
+        }),
+        style: new ol.style.Style({
+          fill: new ol.style.Fill({
+            color: 'rgb(0, 0, 0)'
+          }),
+          stroke: null
+        }),
+        opacity: 0.5
+      });
+      map.addLayer(timeLayer);
+
+      setInterval(function(){
+        timeLayer.getSource().clear();
+        timeLayer.getSource().addFeatures(
+          (new ol.format.GeoJSON()).readFeatures(new GeoJSONTerminator(), {
+            featureProjection: 'EPSG:3857'
+          })
+        );
+      }, 500);
+
+    </script>
+  </body>
+</html>
