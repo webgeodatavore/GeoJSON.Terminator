@@ -1,6 +1,6 @@
 {
   "name": "@webgeodatavore/geojson.terminator",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "description": "GeoJSON Night and day regions on Earth",
   "main": "GeoJSON.Terminator.js",
   "scripts": {
