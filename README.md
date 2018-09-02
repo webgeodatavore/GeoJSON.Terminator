@@ -44,3 +44,31 @@ If you need a valid GeoJSON in another context, you may use something like GDAL/
 
 ## With npm
 
+    // At the beginning
+    import VectorLayer from 'ol/layer/Vector';
+    import VectorSource from 'ol/source/Vector';
+    import GeoJSON from 'ol/format/GeoJSON';
+    import Style from 'ol/style/Style';
+    import Stroke from 'ol/style/Stroke';
+    import Fill from 'ol/style/Fill';
+    import GeoJSONTerminator from "@webgeodatavore/geojson.terminator";
+
+
+    // Then after map instanciation
+
+    const geoJSON = new GeoJSONTerminator();
+    const timeLayer = new VectorLayer({
+      source: new VectorSource({
+        features: (new GeoJSON()).readFeatures(geoJSON, {
+          featureProjection: 'EPSG:3857'
+        })
+      }),
+      style: new Style({
+        fill: new Fill({
+          color: 'rgb(0, 0, 0)'
+        }),
+        stroke: null
+      }),
+      opacity: 0.5
+    });
+    map.addLayer(timeLayer);
